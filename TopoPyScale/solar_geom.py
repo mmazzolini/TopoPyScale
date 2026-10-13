@@ -70,7 +70,7 @@ def get_solar_geom(df_position, start_date, end_date, tstep, sr_epsg="4326", num
     ds = xr.Dataset(
         {
             "zenith": (["point_id", "time"], np.deg2rad(arr_val[:, 0, :])),
-            "azimuth": (["point_id", "time"], np.deg2rad(arr_val[:,1,:] - 180)),
+            "azimuth": (["point_id", "time"], np.deg2rad(180-arr_val[:,1,:])),
             "elevation": (["point_id", "time"], np.deg2rad(arr_val[:, 2, :])),
         },
         coords={
